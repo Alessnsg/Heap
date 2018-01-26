@@ -51,7 +51,7 @@ var Heap = function () {
       **/
       (_nodes = this.nodes).push.apply(_nodes, arguments);
       /**
-      *
+      * sort nodes
       **/
       this.sort();
       /**
@@ -85,7 +85,7 @@ var Heap = function () {
       **/
       this.nodes = filtered;
       /**
-      *
+      * sort nodes
       **/
       this.sort();
       /**
@@ -118,7 +118,7 @@ var Heap = function () {
       **/
       this.nodes = nodes;
       /**
-      *
+      * sort nodes
       **/
       this.sort();
       /**
@@ -141,7 +141,7 @@ var Heap = function () {
       **/
       var node = this.nodes.shift();
       /**
-      *
+      * sort nodes
       **/
       this.sort();
       /**
@@ -153,19 +153,19 @@ var Heap = function () {
     key: "sort",
     value: function sort() {
       /**
-      *
+      * get nodes
       **/
       var nodes = this.nodes;
       /**
-      *
+      * get comparator function
       **/
       var compare = this.comparator;
       /**
-      *
+      * iterate binary tree
       **/
       for (var index = Math.floor(nodes.length / 2); index >= 0; index--) {
         /**
-        *
+        * compare nodes to sort
         **/
         compare.call(this, nodes, index);
       }
@@ -178,24 +178,48 @@ var Heap = function () {
   }, {
     key: "comparator",
     value: function comparator(nodes, index) {
+      /**
+      * get largest number
+      **/
       var largest = index;
+      /**
+      * get nodes size
+      **/
       var size = nodes.length;
+      /**
+      * get left node
+      **/
       var left = 2 * index + 1;
+      /**
+      * get right node
+      **/
       var right = left + 1;
+      /**
+      * swap nodes function
+      **/
       var swap = function swap(nodes, firstIndex, secondIndex) {
         var temporary = nodes[firstIndex];
         nodes[firstIndex] = nodes[secondIndex];
         nodes[secondIndex] = temporary;
       };
 
+      /**
+      * if left node is larger is the largest
+      **/
       if (left <= size && nodes[left] > nodes[largest]) {
         largest = left;
       }
 
+      /**
+      * if right node is larger is the largest
+      **/
       if (right <= size && nodes[right] > nodes[largest]) {
         largest = right;
       }
 
+      /**
+      * if largest is not equals to the index sort again
+      **/
       if (largest !== index) {
         swap(nodes, index, largest);
         this.sort(nodes, largest);

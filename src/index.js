@@ -27,7 +27,7 @@ export default class Heap {
     **/
     this.nodes.push(...nodes)
     /**
-    *
+    * sort nodes
     **/
     this.sort()
     /**
@@ -56,7 +56,7 @@ export default class Heap {
     **/
     this.nodes = filtered
     /**
-    *
+    * sort nodes
     **/
     this.sort()
     /**
@@ -86,7 +86,7 @@ export default class Heap {
     **/
     this.nodes = nodes
     /**
-    *
+    * sort nodes
     **/
     this.sort()
     /**
@@ -106,7 +106,7 @@ export default class Heap {
     **/
     const node = this.nodes.shift()
     /**
-    *
+    * sort nodes
     **/
     this.sort()
     /**
@@ -117,19 +117,19 @@ export default class Heap {
 
   sort() {
     /**
-    *
+    * get nodes
     **/
     const nodes = this.nodes
     /**
-    *
+    * get comparator function
     **/
     const compare = this.comparator;
     /**
-    *
+    * iterate binary tree
     **/
     for (let index = Math.floor(nodes.length/2); index >= 0; index--) {
       /**
-      *
+      * compare nodes to sort
       **/
       compare.call(this, nodes, index)
     }
@@ -139,16 +139,34 @@ export default class Heap {
   * INTERNAL OPERATIONS
   **/
   comparator (nodes, index)  {
+    /**
+    * get largest number
+    **/
     let largest = index
+    /**
+    * get nodes size
+    **/
     const size = nodes.length
+    /**
+    * get left node
+    **/
     const left = 2 * index + 1
+    /**
+    * get right node
+    **/
     const right = left + 1
+    /**
+    * swap nodes function
+    **/
     const swap = (nodes, firstIndex, secondIndex) => {
       const temporary = nodes[firstIndex]
       nodes[firstIndex] = nodes[secondIndex]
       nodes[secondIndex] = temporary
     }
     
+    /**
+    * if left node is larger is the largest
+    **/
     if (
       left <= size &&
       nodes[left] > nodes[largest]
@@ -156,6 +174,9 @@ export default class Heap {
       largest = left
     }
 
+    /**
+    * if right node is larger is the largest
+    **/
     if (
       right <= size &&
       nodes[right] > nodes[largest]
@@ -163,6 +184,9 @@ export default class Heap {
       largest = right
     }
 
+    /**
+    * if largest is not equals to the index sort again
+    **/
     if ( largest !== index ) {
       swap(nodes, index, largest)
       this.sort(nodes, largest)
