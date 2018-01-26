@@ -1,6 +1,6 @@
 {
   "name": "heap-struct",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript Heap implementation",
   "main": "dist/index.js",
   "author": "Daniel Alessandro Aguilar <alessnsg@gmail.com>",
