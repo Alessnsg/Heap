@@ -1,5 +1,5 @@
 {
-  "name": "heap",
+  "name": "heap-struct",
   "version": "1.0.0",
   "description": "A JavaScript Heap implementation",
   "main": "dist/index.js",
@@ -16,5 +16,9 @@
   },
   "keywords": [
     "Heap"
-  ]
+  ],
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/Alessnsg/Heap.git"
+  }
 }
